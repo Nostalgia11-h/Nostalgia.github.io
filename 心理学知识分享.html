@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心理学知识分享｜《早安，怪物》</title>
+  <style>
+    :root {
+      --paper: #f3e7d2;
+      --paper-light: #fffaf0;
+      --paper-deep: #e7d4b6;
+      --ink: #493a2b;
+      --muted: #796956;
+      --accent: #98764c;
+      --line: #dfc9a8;
+      --shadow: 0 7px 20px rgba(88, 65, 39, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.85;
+      background-color: var(--paper);
+      background-image: radial-gradient(rgba(130, 99, 60, .07) .7px, transparent .7px);
+      background-size: 6px 6px;
+    }
+
+    a { color: #8b6840; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 30px 0 24px; }
+
+    .topline {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 0 4px 18px; color: var(--muted); font-size: 14px;
+      border-bottom: 1px solid rgba(139, 104, 64, .2); margin-bottom: 24px;
+    }
+    .site-name { font-weight: 700; letter-spacing: 1px; color: var(--ink); }
+
+    .paper {
+      position: relative;
+      background: rgba(255, 250, 240, .86);
+      border: 1px solid var(--line);
+      border-radius: 4px 7px 5px 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      display: grid; grid-template-columns: 150px minmax(0, 1fr) 250px;
+      align-items: center; gap: 28px; padding: 28px; margin-bottom: 22px;
+      background: linear-gradient(120deg, rgba(255,250,240,.94), rgba(231,212,182,.62));
+    }
+    .book-cover {
+      min-height: 190px; display: flex; align-items: center; justify-content: center;
+      padding: 14px; text-align: center; color: #fdf5e7; font-family: Georgia, serif;
+      font-size: 22px; line-height: 1.5; letter-spacing: 2px;
+      background: linear-gradient(155deg, #b6a18a, #756653 55%, #d7c4a7);
+      border: 5px solid #e7d6bc; box-shadow: 3px 5px 10px rgba(66,47,28,.18);
+    }
+    .eyebrow { color: var(--accent); font-size: 12px; letter-spacing: 3px; margin: 0 0 6px; }
+    h1 { font-family: Georgia, "Songti SC", "SimSun", serif; font-size: clamp(28px, 4vw, 39px); line-height: 1.35; margin: 0 0 10px; }
+    .author { color: var(--muted); margin: 0 0 12px; }
+    .external-link { display: inline-block; border-bottom: 1px solid #b99b75; padding-bottom: 2px; }
+    .quote {
+      padding: 18px 18px 18px 20px; margin: 0; font-family: Georgia, "Songti SC", serif;
+      font-size: 16px; color: #6d5942; border-left: 2px solid #b89b73;
+      background: rgba(255, 248, 234, .56);
+    }
+
+    .section { padding: 24px; margin-bottom: 22px; }
+    .section-heading { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: 23px; font-family: Georgia, "Songti SC", serif; }
+    .section-heading::before { content: ""; width: 4px; height: 25px; background: var(--accent); display: inline-block; }
+    .intro { margin: 0; color: #5f5040; }
+
+    .story-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+    .story-card {
+      grid-column: span 2; padding: 20px; background: rgba(255, 252, 245, .88);
+      border: 1px solid #e4d2b7; box-shadow: 0 4px 12px rgba(88,65,39,.06);
+      position: relative;
+    }
+    .story-card:nth-child(4) { grid-column: 2 / span 2; }
+    .story-card:nth-child(5) { grid-column: 4 / span 2; }
+    .story-number { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; background: #9b805e; color: #fff8eb; font-size: 13px; margin-right: 8px; vertical-align: middle; }
+    .story-card h3 { display: inline; font-size: 16px; line-height: 1.6; }
+    .story-card p { margin: 14px 0 0; color: #675847; font-size: 14px; }
+
+    .insight-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .insight-card { background: rgba(246, 235, 216, .72); border: 1px solid #e2ceb0; padding: 18px; border-radius: 3px; }
+    .insight-card h3 { font-size: 16px; margin: 0 0 8px; }
+    .insight-card p { margin: 0; font-size: 14px; color: #675847; }
+    .footer { text-align: center; color: #8c7962; font-family: Georgia, "Songti SC", serif; padding: 4px 0 12px; font-size: 14px; letter-spacing: 2px; }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 100px minmax(0, 1fr); gap: 18px; padding: 20px; }
+      .book-cover { min-height: 140px; font-size: 17px; }
+      .quote { grid-column: 1 / -1; }
+      .section { padding: 18px; }
+      .story-grid { display: grid; grid-template-columns: 1fr; }
+      .story-card, .story-card:nth-child(4), .story-card:nth-child(5) { grid-column: auto; }
+      .insight-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px) {
+      .hero { grid-template-columns: 1fr; }
+      .book-cover { width: 120px; min-height: 150px; }
+      .topline { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topline">
+      <div class="site-name">心理学知识分享</div>
+      <div>读书 · 思考 · 成长</div>
+    </header>
+
+    <section class="hero paper">
+      <div class="book-cover" aria-label="书籍封面文字示意">早安，<br>怪物</div>
+      <div>
+        <p class="eyebrow">READING NOTES / 读书笔记</p>
+        <h1>《早安，怪物》</h1>
+        <p class="author">作者：凯瑟琳·吉尔迪纳（Catherine Gildiner）</p>
+        <a class="external-link" href="https://baike.baidu.com/item/%E6%97%A9%E5%AE%89%EF%BC%8C%E6%80%AA%E7%89%A9/64168894" target="_blank" rel="noopener noreferrer">百科详情 ↗</a>
+      </div>
+      <blockquote class="quote">“每个人心里都有一个不愿被看见的角落，但那不是你真正的全部。”</blockquote>
+    </section>
+
+    <section class="section paper">
+      <h2 class="section-heading">内容简介</h2>
+      <p class="intro">五位来访者都有各自不同的经历，作者通过长期的心理治疗，逐渐帮助他们理解自己为什么会变成现在的样子，并尝试从过去的伤害中走出来。书中的五个故事分别围绕劳拉、彼得、丹尼、艾伦娜和玛德琳展开。</p>
+
+      <div class="story-grid">
+        <article class="story-card">
+          <span class="story-number">01</span><h3>劳拉：过早承担责任的孩子</h3>
+          <p>劳拉九岁时，父亲将她和两个年幼的弟妹遗弃在偏僻的木屋里。为了活下去，她不得不承担照顾弟妹的责任。后来，她虽然长大成人，却仍然与不可靠、
+            具有操控性和虐待倾向的父亲纠缠不清，也容易在与男性的关系中重复过去的相处模式。</p>
+          <p><b>主要症状和行为表现</b>：情绪压抑、过度独立、关系模式重复、压力相关的身体症状</p>
+        </article>
+        <article class="story-card">
+          <span class="story-number">02</span><h3>彼得：身体亲密关系中的障碍</h3>
+          <p>彼得从幼年起就遭受母亲的忽视和言语虐待，曾长期被独自关在阁楼里。成年后，他事业上取得了一定成就，但在亲密关系中遇到严重困难，尤其是勃起
+            功能障碍。作者通过治疗逐渐探索这些身体表现与早期情感经历之间的联系，并帮助他重新认识自己与母亲的关系。</p>
+          <p><b>主要症状和行为表现</b>：勃起功能障碍、亲密关系困难、母子关系中的边界问题</p>
+          </article>
+        <article class="story-card">
+          <span class="story-number">03</span><h3>丹尼：失去情感感受能力的人</h3>
+          <p>丹尼是克里族人，童年被送进寄宿学校，与家人分离，不仅被禁止使用自己的民族语言，还遭受身体虐待和性侵。多年以后，妻子和女儿在车祸中去世，
+            他却看起来并不悲伤，也不愿停止工作。治疗逐渐揭开了他长期被压抑的痛苦，帮助他重新接触自己的情绪，并理解自身与家庭、文化身份之间的联系。</p>
+          <p><b>主要症状和行为表现</b>：情感麻木、回避情绪、对治疗者缺乏信任、悲伤的延迟性显现</p>
+          </article>
+        <article class="story-card">
+          <span class="story-number">04</span><h3>艾伦娜：长期虐待下破碎的自我认知</h3>
+          <p>艾伦娜在幼年失去母亲的陪伴，随后长期遭受父亲的严重虐待与性侵，即使后来住到祖母家，伤害也没有停止。成年后的她有着成功的职业生涯，却仍然
+            受到过去的严重影响。父亲的声音会反复在她脑海中出现，并引发强烈的生理反应。治疗的重点是帮助她认识到，问题并不在于她天生有缺陷，而在于她曾
+            经受到的伤害，并逐步重建完整的自我认知。</p>
+          <p><b>主要症状和行为表现</b>：强烈的躯体反应、侵入性记忆或内在声音体验、负面的自我评价、自我整合困难</p>
+        </article>
+        <article class="story-card">
+          <span class="story-number">05</span><h3>玛德琳：被“怪物”标签困住的人</h3>
+          <p>玛德琳出生于富裕家庭，却长期遭到母亲的羞辱、贬低和情感忽视。母亲甚至每天用“早安，怪物”这样的称呼对待她。成年后的玛德琳事业成功，但内心
+            仍然受到童年经历的影响，表现出明显的焦虑、强迫性思维和严重的飞行恐惧。她害怕飞机坠毁，甚至不允许员工乘坐飞机，导致古董生意受到影响。治疗
+            帮助她逐渐认识到母亲的伤害，并重新建立对自己的认识。</p>
+          <p><b>主要症状和行为表现</b>：严重的飞行恐惧、焦虑与灾难化思维、强迫性思维和控制行为、低自我价值感</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section paper">
+      <h2 class="section-heading">思想感悟</h2>
+      <p class="intro">我们可以从三个视角打开这本书。</p>
+      <div class="insight-grid">
+        <article class="insight-card">
+          <h3><span class="story-number">01</span>早期经历如何影响成年后的关系</h3>
+          <p>一个人可能因为小时候缺乏安全感，长大后特别害怕被抛弃；也可能因为曾经受到伤害，而习惯压抑需求、不信任别人。这些都是理解人物时可以关注的线索，但不能简单地认为所有相似行为都源于童年创伤。</p>
+        </article>
+        <article class="insight-card">
+          <h3><span class="story-number">02</span>防御机制既有保护作用，也可能带 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来限制</h3>
+          <p>回避、压抑、情感麻木等反应，有时能帮助人度过难以承受的经历。但当危险已经过去，这些反应仍然持续时，就可能妨碍一个人建立亲密关系、表达情绪或认识自己。</p>
+        </article>
+        <article class="insight-card">
+          <h3><span class="story-number">03</span>心理治疗是重新理解自己的过程</h3>
+          <p>治疗师需要帮助来访者建立信任，逐步理解过去与当下的联系，并尝试新的应对方式。改变并不意味着忘记过去，而是过去不再完全决定现在。</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">— 读书 · 思考 · 成长 —</footer>
+  </main>
+</body>
+</html>
